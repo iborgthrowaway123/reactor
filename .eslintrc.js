@@ -3,17 +3,14 @@ module.exports = {
     browser: true,
     es2020: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: ["plugin:react/recommended", "airbnb"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 11,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  plugins: ['react'],
-  rules: {
-    'react/destructuring-assignment': 'off',
-    'react/prefer-stateless-function': 'off',
-  },
+  plugins: ["react"],
+  rules: {},
 };

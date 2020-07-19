@@ -1,9 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Account extends Component {
-  render() {
-    return <div>Account</div>;
-  }
-}
+const Account = () => <div>Account</div>;
 
 export default Account;
