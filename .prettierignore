@@ -1,6 +1,0 @@
-src/serviceWorker.js
-.github
-build
-node_modules
-public
-*.md

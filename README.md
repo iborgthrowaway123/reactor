@@ -1,4 +1,4 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2c416628bc594e0b9035dfab5e352609)](https://www.codacy.com/gh/iborg-ai/reactor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iborg-ai/reactor&amp;utm_campaign=Badge_Grade)![CI](https://github.com/iborg-ai/reactor/workflows/CI/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2c416628bc594e0b9035dfab5e352609)](https://www.codacy.com/gh/iborg-ai/reactor?utm_source=github.com&utm_medium=referral&utm_content=iborg-ai/reactor&utm_campaign=Badge_Grade)![CI](https://github.com/iborg-ai/reactor/workflows/CI/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

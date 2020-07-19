@@ -1,0 +1,10 @@
+.Header {
+  background-color: #eeeeee;
+  padding: 5px;
+  border-bottom: solid thin #cccccc;
+}
+
+button {
+  padding-left: 5px;
+  padding-right: 5px;
+}
