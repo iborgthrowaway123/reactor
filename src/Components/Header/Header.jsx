@@ -3,7 +3,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import "./Header.css";
 
 const Header = () => {
-  const [state, updateState] = useState({
+  const [state, setState] = useState({
     open: false,
     message: "",
     email: "",
@@ -29,25 +29,25 @@ const Header = () => {
         throw new Error(`${response.status}: ${response.statusText}`);
       })
       .then((response) => {
-        updateState({ ...state, open: true, message: response.message });
+        setState({ ...state, open: true, message: response.message });
         setTimeout(() => {
-          updateState({ ...state, open: false, message: "" });
+          setState({ ...state, open: false, message: "" });
         }, 6000);
       })
       .catch((error) => {
-        updateState({ ...state, open: true, message: error.message });
+        setState({ ...state, open: true, message: error.message });
         setTimeout(() => {
-          updateState({ ...state, open: false, message: "" });
+          setState({ ...state, open: false, message: "" });
         }, 6000);
       });
   };
 
   const handleEmailChange = (event) => {
-    updateState({ ...state, email: event.target.value });
+    setState({ ...state, email: event.target.value });
   };
 
   const handlePasswordChange = (event) => {
-    updateState({ ...state, password: event.target.value });
+    setState({ ...state, password: event.target.value });
   };
 
   return (
