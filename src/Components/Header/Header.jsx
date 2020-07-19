@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import Snackbar from "@material-ui/core/Snackbar";
 import "./Header.css";
 
-class Header extends React.Component {
+export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,9 +12,6 @@ class Header extends React.Component {
       email: "",
       password: "",
     };
-    this.doLogin = this.doLogin.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   doLogin() {
@@ -36,7 +33,11 @@ class Header extends React.Component {
         }, 6000);
       })
       .catch((error) => {
-        this.setState({ open: true, message: error.response.data.error });
+        if (error.response) {
+          this.setState({ open: true, message: error.response.data.error });
+        } else {
+          this.setState({ open: true, message: "Request Failed" });
+        }
         setTimeout(() => {
           this.setState({ open: false, message: "" });
         }, 6000);
@@ -93,5 +94,3 @@ class Header extends React.Component {
     );
   }
 }
-
-export default Header;

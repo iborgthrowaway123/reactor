@@ -16,6 +16,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    "react/destructuring-assignment": "off"
+    'react/destructuring-assignment': 'off',
+    'react/prefer-stateless-function': 'off',
   },
 };
