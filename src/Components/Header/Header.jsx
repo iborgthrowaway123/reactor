@@ -12,6 +12,9 @@ export default class Header extends Component {
       email: "",
       password: "",
     };
+    this.doLogin = this.doLogin.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   doLogin() {
