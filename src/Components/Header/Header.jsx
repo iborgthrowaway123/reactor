@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import "./Header.css";
+import Http from "../../Services/Http";
 
 const Header = () => {
   const [state, setState] = useState({
@@ -13,21 +14,7 @@ const Header = () => {
   const doLogin = () => {
     const { email, password } = state;
     const url = "http://127.0.0.1:8080/api/login";
-    const options = {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    };
-    fetch(url, options)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error(`${response.status}: ${response.statusText}`);
-      })
+    Http(url, "POST", { email, password })
       .then((response) => {
         setState({ ...state, open: true, message: response.message });
         setTimeout(() => {
