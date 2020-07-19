@@ -16,28 +16,26 @@ const Header = () => {
     const options = {
       method: "POST",
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json;charset=UTF-8",
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
     };
     fetch(url, options)
       .then((response) => {
-        updateState({ ...state, open: true, message: response.data.message });
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(`${response.status}: ${response.statusText}`);
+      })
+      .then((response) => {
+        updateState({ ...state, open: true, message: response.message });
         setTimeout(() => {
           updateState({ ...state, open: false, message: "" });
         }, 6000);
       })
       .catch((error) => {
-        if (error.response) {
-          updateState({
-            ...state,
-            open: true,
-            message: error.response.data.error,
-          });
-        } else {
-          updateState({ ...state, open: true, message: "Request Failed" });
-        }
+        updateState({ ...state, open: true, message: error.message });
         setTimeout(() => {
           updateState({ ...state, open: false, message: "" });
         }, 6000);
