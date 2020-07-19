@@ -4,7 +4,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <div className="Footer fixed-bottom">
-      Copyrights 2020 - {new Date().getFullYear()} All Rights Reserved.
+      Copyrights 2019 - {new Date().getFullYear()} iBorg. All Rights Reserved.
     </div>
   );
 }
