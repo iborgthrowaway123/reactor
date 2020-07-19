@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import Snackbar from "@material-ui/core/Snackbar";
 import "./Header.css";
 
@@ -13,16 +12,16 @@ const Header = () => {
 
   const doLogin = () => {
     const { email, password } = state;
-    axios
-      .post(
-        "http://127.0.0.1:8080/api/login",
-        { email, password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+    const url = "http://127.0.0.1:8080/api/login";
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+      body: JSON.stringify({ email, password }),
+    };
+    fetch(url, options)
       .then((response) => {
         updateState({ ...state, open: true, message: response.data.message });
         setTimeout(() => {
