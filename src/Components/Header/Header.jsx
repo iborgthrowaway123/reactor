@@ -14,7 +14,7 @@ const Header = () => {
   const doLogin = () => {
     const { email, password } = state;
     const url = "http://127.0.0.1:8080/api/login";
-    Http(url, "POST", { email, password })
+    Http.post(url, { email, password })
       .then((response) => {
         setState({ ...state, open: true, message: response.message });
         setTimeout(() => {
