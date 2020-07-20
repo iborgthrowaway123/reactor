@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import "./Header.css";
+import { connect } from "react-redux";
 import Http from "../../Services/Http";
 
-const Header = () => {
+const Header = (props) => {
+  const { isLogged } = props;
   const [state, setState] = useState({
     open: false,
     message: "",
@@ -17,6 +19,7 @@ const Header = () => {
     Http.post(url, { email, password })
       .then((response) => {
         setState({ ...state, open: true, message: response.message });
+        props.setLoggedInState(true);
         setTimeout(() => {
           setState({ ...state, open: false, message: "" });
         }, 6000);
@@ -39,43 +42,64 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <div className="d-flex flex-row align-items-center justify-content-end">
-        <div className="ml-1">
-          <input
-            type="email"
-            value={state.email}
-            onChange={handleEmailChange}
-            className="form-control form-control-sm"
-            placeholder="Email Address"
+      {!isLogged ? (
+        <div>
+          <div className="d-flex flex-row align-items-center justify-content-end">
+            <div className="ml-1">
+              <input
+                type="email"
+                value={state.email}
+                onChange={handleEmailChange}
+                className="form-control form-control-sm"
+                placeholder="Email Address"
+              />
+            </div>
+            <div className="ml-1">
+              <input
+                type="password"
+                value={state.password}
+                onChange={handlePasswordChange}
+                className="form-control form-control-sm"
+                placeholder="Password"
+              />
+            </div>
+            <div className="ml-1">
+              <button
+                type="submit"
+                disabled={state.email === "" || state.password === ""}
+                className="btn btn-sm btn-success"
+                onClick={doLogin}
+              >
+                LOGIN
+              </button>
+            </div>
+          </div>
+          <Snackbar
+            autoHideDuration={6000}
+            open={state.open}
+            message={state.message}
           />
         </div>
-        <div className="ml-1">
-          <input
-            type="password"
-            value={state.password}
-            onChange={handlePasswordChange}
-            className="form-control form-control-sm"
-            placeholder="Password"
-          />
-        </div>
-        <div className="ml-1">
-          <button
-            type="submit"
-            disabled={state.email === "" || state.password === ""}
-            className="btn btn-sm btn-success"
-            onClick={doLogin}
-          >
-            LOGIN
-          </button>
-        </div>
-      </div>
-      <Snackbar
-        autoHideDuration={6000}
-        open={state.open}
-        message={state.message}
-      />
+      ) : (
+        <div>Logged In</div>
+      )}
     </div>
   );
 };
 
-export default Header;
+const mapStateToProps = (storeState) => ({
+  isLogged: storeState.isLogged,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setLoggedInState: (loggedInState) => {
+    dispatch({
+      type: "SET_LOGGED_IN_STATE",
+      payload: {
+        value: loggedInState,
+      },
+    });
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
