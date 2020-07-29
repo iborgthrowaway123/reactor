@@ -1,9 +1,10 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AppRoutes from "../../routes";
 
 const AppRouter = () => (
   <BrowserRouter>
+  <Switch>
     {AppRoutes.map((route, index) => (
       <Route
         key={`route_${index + 1}`}
@@ -12,6 +13,7 @@ const AppRouter = () => (
         component={route.component}
       />
     ))}
+    </Switch>
   </BrowserRouter>
 );
 

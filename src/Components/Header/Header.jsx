@@ -3,6 +3,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import "./Header.css";
 import { connect } from "react-redux";
 import Http from "../../Services/Http";
+import {Link } from "react-router-dom";
 
 const Header = (props) => {
   const { isLogged } = props;
@@ -42,6 +43,18 @@ const Header = (props) => {
 
   return (
     <div className="Header">
+      <Link to="/">
+      <button>
+        <img
+        className="Logo"
+        src="https://iborg.ai/assets/logo.png"
+        alt="AppLogo"
+        />
+      </button>
+      </Link>
+      
+  
+      
       {!isLogged ? (
         <div>
           <div className="d-flex flex-row align-items-center justify-content-end">
@@ -72,6 +85,17 @@ const Header = (props) => {
               >
                 LOGIN
               </button>
+            </div>
+            <div className="ml-1">
+              <Link to="/Signup">
+              <button
+                type="submit"
+                className="btn btn-sm btn-success"
+                
+              >
+                Sign Up
+              </button>
+              </Link>
             </div>
           </div>
           <Snackbar
