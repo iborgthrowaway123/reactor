@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Http from "../../Services/Http";
 import Snackbar from "@material-ui/core/Snackbar";
+import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 const Signup = () => {
   const [state, setState] = useState({
@@ -36,30 +40,42 @@ const Signup = () => {
     setState({ ...state, password: event.target.value });
   };
 
+  const mystyle = {
+    backgroundColor: "#eeeeee",
+    padding: 20,
+    margin: 107,
+  };
+
   return (
-  <div>
-    <form column onSubmit={doSignup} className="d-flex justify-content-center">
-      <label>
-        Email:
-        <input 
-          type="email"                
-          value={state.email}
-          onChange={handleEmailChange}
-          className="form-control-sm"
-          placeholder="Email Address" />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={state.password}
-          onChange={handlePasswordChange}
-          className="form-control-sm"
-          placeholder="Password"
-        />
-      </label>
-      <button type="submit" class="btn btn-primary">Signup</button>
+  <div className="d-flex flex-column align-items-center justify-content-center">
+    <div className="card" style={mystyle}>
+      <div className="card-body">
+        <h1>Register</h1>
+    <form className="d-flex justify-content-center">
+      <TextField 
+        id="standard-basic" 
+        label="Full Name" />
+      <TextField 
+        id="standard-basic"
+        type="email" 
+        value={state.email}
+        onChange={handleEmailChange}
+        className="form-control-sm" 
+        label="Email"/>
+      <TextField 
+        id="standard-basic" 
+        label="Username" />
+      <TextField 
+        id="standard-basic" 
+        type="password"
+        value={state.password}
+        onChange={handlePasswordChange}
+        className="form-control-sm"
+        label="Password" />
+      <button type="submit" class="btn btn-primary">Register</button>
     </form>
+    </div>
+    </div>
     <Snackbar
       autoHideDuration={6000}
       open={state.open}
