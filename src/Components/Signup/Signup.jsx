@@ -53,9 +53,7 @@ const Signup = () => {
         <h5>Register</h5>
     <form column onSubmit={doSignup} className="d-flex justify-content-center">
       
-      <TextField 
-        id="standard-basic" 
-        label="Full Name" />
+      
       <TextField 
         id="standard-basic"
         type="email" 
@@ -63,9 +61,7 @@ const Signup = () => {
         onChange={handleEmailChange}
         className="form-control-sm" 
         label="Email"/>
-      <TextField 
-        id="standard-basic" 
-        label="Username" />
+      
       <TextField 
         id="standard-basic" 
         type="password"
