@@ -50,8 +50,9 @@ const Signup = () => {
   <div className="d-flex flex-column align-items-center justify-content-center">
     <div className="card" style={mystyle}>
       <div className="card-body">
-        <h1>Register</h1>
-    <form className="d-flex justify-content-center">
+        <h5>Register</h5>
+    <form column onSubmit={doSignup} className="d-flex justify-content-center">
+      
       <TextField 
         id="standard-basic" 
         label="Full Name" />
@@ -72,7 +73,7 @@ const Signup = () => {
         onChange={handlePasswordChange}
         className="form-control-sm"
         label="Password" />
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="submit" class="btn btn-primary align-items-center">Register</button>
     </form>
     </div>
     </div>
