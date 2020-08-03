@@ -75,12 +75,9 @@ const Signup = () => {
                </div>
             </Grid>          
             <Grid item>
-            <Box
-            display="flex" 
-            alignItems="center"
-            justifyContent="center">
-              <button type="submit" class="btn btn-primary">Signup</button>
-          </Box>
+            <div align="center">
+              <button onClick={doSignup} type="submit" class="btn btn-primary">Signup</button>
+          </div>
             </Grid>    
          </Grid>
 

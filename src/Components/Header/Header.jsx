@@ -4,6 +4,7 @@ import "./Header.css";
 import { connect } from "react-redux";
 import Http from "../../Services/Http";
 import { Link } from "react-router-dom";
+import logo from "../Pictures/Logo.png"
 
 const Header = (props) => {
   const { isLogged } = props;
@@ -43,12 +44,13 @@ const Header = (props) => {
 
   return (
     <div className="Header">
-      <div className="d-inline-flex">
+      <div className="d-flex flex-row align-items-center justify-content-between">
+      <div className="d-flex">
         <Link to="/">
-        <button type="button" style={{border: 0}}>
+        <button type="button" className="homebutton">
           <img className="Logo"
-          src="https://iborg.ai/assets/logo.png"
-          alt="AppLogo"
+          src={logo}
+          alt=""
           />
         </button>
         </Link>
@@ -56,7 +58,8 @@ const Header = (props) => {
 
       {!isLogged ? (
         <div>
-          <div className="d-flex flex-row align-items-center justify-content-end">
+          <div className="d-flex justify-content-end">
+            
             <div className="ml-1">
               <input
                 type="email"
@@ -105,6 +108,7 @@ const Header = (props) => {
       ) : (
         <div>Logged In</div>
       )}
+    </div>
     </div>
   );
 };

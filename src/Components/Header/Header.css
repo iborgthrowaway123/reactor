@@ -8,3 +8,18 @@ button {
   padding-left: 5px;
   padding-right: 5px;
 }
+
+.Header img{
+  width:110px;
+  height:auto;
+}
+
+.homebutton {
+  border: none;
+}
+
+.homebutton:focus {
+  outline: 0;
+  border: none;
+}
+
