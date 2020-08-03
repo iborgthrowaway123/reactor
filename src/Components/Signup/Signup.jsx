@@ -4,7 +4,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/box';
 
 const Signup = () => {
   const [state, setState] = useState({
@@ -47,38 +47,52 @@ const Signup = () => {
   };
 
   return (
-  <div className="d-flex flex-column align-items-center justify-content-center">
-    <div className="card" style={mystyle}>
+<div className="d-flex flex-column align-items-center justify-content-center">
+   <div className="card" style={mystyle}>
       <div className="card-body">
-        <h5>Register</h5>
-    <form column onSubmit={doSignup} className="d-flex justify-content-center">
-      
-      
-      <TextField 
-        id="standard-basic"
-        type="email" 
-        value={state.email}
-        onChange={handleEmailChange}
-        className="form-control-sm" 
-        label="Email"/>
-      
-      <TextField 
-        id="standard-basic" 
-        type="password"
-        value={state.password}
-        onChange={handlePasswordChange}
-        className="form-control-sm"
-        label="Password" />
-      <button type="submit" class="btn btn-primary align-items-center">Register</button>
-    </form>
-    </div>
-    </div>
-    <Snackbar
+         <h5>Register</h5>
+         <Grid container direction ={"column"} spacing={5}>
+            <Grid item>
+               <div>
+                  <TextField 
+                     id="standard-basic"
+                     type="email" 
+                     value={state.email}
+                     onChange={handleEmailChange}
+                     className="form-control-sm" 
+                     label="Email"/>
+               </div>
+            </Grid>
+            <Grid item>
+               <div>
+                  <TextField 
+                     id="standard-basic" 
+                     type="password"
+                     value={state.password}
+                     onChange={handlePasswordChange}
+                     className="form-control-sm"
+                     label="Password" />
+               </div>
+            </Grid>          
+            <Grid item>
+            <Box
+            display="flex" 
+            alignItems="center"
+            justifyContent="center">
+              <button type="submit" class="btn btn-primary">Signup</button>
+          </Box>
+            </Grid>    
+         </Grid>
+
+      </div>
+   </div>
+   <Snackbar
       autoHideDuration={6000}
       open={state.open}
       message={state.message}
-    />
-  </div>);
+      />
+</div>
+);
 };
 
 export default Signup;
