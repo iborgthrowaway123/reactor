@@ -247,6 +247,9 @@ const Account = () => {
                   <option value="Extremely poor">Extremely poor</option>
                </TextField>
             </div>
+            <div align="center">
+                     <button style={{ marginTop:"20px" }} type="submit" class="btn btn-primary">Submit</button>
+                  </div>
          </div>
       </div>
    </div>
