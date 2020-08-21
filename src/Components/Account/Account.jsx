@@ -85,7 +85,7 @@ const Account = () => {
       const mystyle = {
         backgroundColor: "#eeeeee",
         padding: 20,
-        margin: 107,
+        margin: 90,
       };
       const useStyles = makeStyles((theme) => ({
         root: {
