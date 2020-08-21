@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import Http from "../../Services/Http";
 import Snackbar from "@material-ui/core/Snackbar";
 import TextField from '@material-ui/core/TextField';
-import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/box';
 import { useForm } from 'react-hook-form';
 import "./Signup.css";
-import { red } from "@material-ui/core/colors";
+
 
 const Signup = () => {
   const [state, setState] = useState({
