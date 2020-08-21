@@ -92,8 +92,8 @@ const Signup = () => {
                   ref={register({ requried: true, minLength: 6 })} />
                   </div>
                   <div>
-                  {errors.email && errors.email.type === "required" && <p style={words}>Required field</p>}
-                  {errors.email && errors.email.type === "minLength" && <p style={words}>Minimum length of 6</p>}
+                  {errors.password && errors.password.type === "required" && <p style={words}>Required field</p>}
+                  {errors.password && errors.password.type === "minLength" && <p style={words}>Minimum length of 6</p>}
                   </div>
                </Grid>
                <Grid item>
