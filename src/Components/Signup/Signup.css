@@ -2,3 +2,16 @@ button {
   display: block;
 }
 
+.signupemail, .signuppassword {
+  border: none;
+  border-bottom: 1px solid lightgray;
+  background-color:#eeeeee;
+}
+
+input:focus {
+  outline: none;
+}
+
+h5 {
+  margin-bottom: 40px;
+}

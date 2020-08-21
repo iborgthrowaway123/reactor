@@ -5,6 +5,9 @@ import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/box';
+import { useForm } from 'react-hook-form';
+import "./Signup.css";
+import { red } from "@material-ui/core/colors";
 
 const Signup = () => {
   const [state, setState] = useState({
@@ -12,6 +15,11 @@ const Signup = () => {
     email: "",
     password: "",
   });
+
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+  };
 
   const doSignup = (event) => {
     event.preventDefault();
@@ -46,41 +54,55 @@ const Signup = () => {
     margin: 107,
   };
 
-  return (
-<div className="d-flex flex-column align-items-center justify-content-center">
-   <div className="card" style={mystyle}>
-      <div className="card-body">
-         <h5>Register</h5>
-         <Grid container direction ={"column"} spacing={5}>
-            <Grid item>
-               <div>
-                  <TextField 
-                     id="standard-basic"
-                     type="email" 
-                     value={state.email}
-                     onChange={handleEmailChange}
-                     className="form-control-sm" 
-                     label="Email"/>
-               </div>
-            </Grid>
-            <Grid item>
-               <div>
-                  <TextField 
-                     id="standard-basic" 
-                     type="password"
-                     value={state.password}
-                     onChange={handlePasswordChange}
-                     className="form-control-sm"
-                     label="Password" />
-               </div>
-            </Grid>          
-            <Grid item>
-            <div align="center">
-              <button onClick={doSignup} type="submit" class="btn btn-primary">Signup</button>
-          </div>
-            </Grid>    
-         </Grid>
+  const words = {
+    color: "red",
+  }
 
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+   <div className="d-flex flex-column align-items-center justify-content-center">
+      <div className="card" style={mystyle}>
+         <div className="card-body">
+            <h5><center>Register</center></h5>
+            <Grid container direction ={"column"} spacing={5}>
+               <Grid item>
+                 <div>
+                 <input name="email" className="signupemail"
+                  value={state.email} 
+                  type="email" 
+                  placeholder="Email"
+                  onChange={handleEmailChange} 
+                  ref={register({ required: true , pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    }
+                })} />
+                 </div>
+                <div>
+                {errors.email && errors.email.type === "required" && <p style={words}>Required field</p>}
+                  {errors.email && errors.email.type === "pattern"  && <p style={words}>Invalid email address</p>}
+                </div>
+               </Grid>
+               <Grid item>
+                 <div>
+                  <input name="password" className="signuppassword"
+                  type="password"
+                  placeholder="Password"
+                  value={state.password}
+                  onChange={handlePasswordChange} 
+                  ref={register({ requried: true, minLength: 6 })} />
+                  </div>
+                  <div>
+                  {errors.email && errors.email.type === "required" && <p style={words}>Required field</p>}
+                  {errors.email && errors.email.type === "minLength" && <p style={words}>Minimum length of 6</p>}
+                  </div>
+               </Grid>
+               <Grid item>
+                  <div align="center">
+                     <button type="submit" class="btn btn-primary">Sign up</button>
+                  </div>
+               </Grid>
+            </Grid>
+         </div>
       </div>
    </div>
    <Snackbar
@@ -88,7 +110,7 @@ const Signup = () => {
       open={state.open}
       message={state.message}
       />
-</div>
+</form>
 );
 };
 
