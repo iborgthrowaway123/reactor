@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Http from "../../Services/Http";
 import { Link } from "react-router-dom";
 import logo from "../Pictures/Logo.png"
+import { Box } from "@material-ui/core";
 
 const Header = (props) => {
   const { isLogged } = props;
@@ -41,6 +42,7 @@ const Header = (props) => {
   const handlePasswordChange = (event) => {
     setState({ ...state, password: event.target.value });
   };
+
 
   return (
     <div className="Header">
@@ -106,7 +108,25 @@ const Header = (props) => {
           />
         </div>
       ) : (
-        <div>Logged In</div>
+        <div className="HeaderLoggedin">
+          <div className="d-flex flex-row align-items-center justify-content-end">
+
+          <div className="ml-1">
+          <Link to="/account">
+          <button
+          type="button"
+          className="btn btn-sm btn-success"
+          >
+            Survey
+          </button>
+          </Link>
+          </div>
+
+          <div>
+            <Box className="loggedin">Logged In</Box>
+          </div>
+          </div>
+        </div>
       )}
     </div>
     </div>
